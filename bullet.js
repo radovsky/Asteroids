@@ -14,6 +14,7 @@
          var allAsteroids = Asteroids.Game.myAsteroids;
          for (var i = 0; i < allAsteroids.length; i++) {
              if (this.isCollidedWith(allAsteroids[i])) {
+				 console.log("Asteroid hit");
                  this.game.removeAsteroid(allAsteroids[i]);
                  this.game.removeBullet(this);
              }

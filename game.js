@@ -7,13 +7,14 @@
         this.ctx = ctx;
         this.myAsteroids = [];
         this.myBullets = [];
-        this.addAsteroids(0);
+        this.addAsteroids(5
+		);
         this.ship = new Asteroids.Ship([Game.DIM_X / 2, Game.DIM_Y / 2], [0, 0], Asteroids.Ship.RADIUS, Asteroids.Ship.COLOR);
     };
     
     Game.DIM_X = 500;
     Game.DIM_Y = 500;
-    Game.FPS = 20;
+    Game.REFRESH_MS = 20;
     
     Game.prototype.addAsteroids = function (numAsteroids) {
         for (var i = 0; i < numAsteroids; i++){
@@ -63,7 +64,7 @@
         this.bindKeyHandlers();
         this.timerId = window.setInterval ( function () {
             game.step();
-        }, Game.FPS);
+        }, Game.REFRESH_MS);
     };
     
     Game.prototype.checkCollisions = function() {
@@ -73,6 +74,14 @@
                 window.alert("You lost.");
                 this.stop();
             }
+			
+			for (var j = 0; j < this.myBullets.length; j++) {
+				var currentBullet = this.myBullets[j];
+				if (currentAsteroid.isCollidedWith(currentBullet)) {
+					this.removeBullet(currentBullet);
+					this.removeAsteroid(currentAsteroid);
+				}
+			}
         }
     };
     
@@ -83,11 +92,13 @@
     };
     
     Game.prototype.removeAsteroid = function(asteroid) {
+		console.log("removing asteroid");
         var deleteIndex = this.myAsteroids.indexOf(asteroid);
         this.myAsteroids.splice(deleteIndex, 1);
     };
     
     Game.prototype.removeBullet = function(bullet) {
+		console.log("removing bullet");
         var deleteIndex = this.myAsteroids.indexOf(bullet);
         this.myAsteroids.splice(deleteIndex, 1);
     };
