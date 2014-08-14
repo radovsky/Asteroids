@@ -1,1 +1,1 @@
-Play [here](http://www.radovsky.com/snake), or see the rest of my portfolio [here](http://www.radovsky.com).
+Play [here](http://www.radovsky.com/asteroids), or see the rest of my portfolio [here](http://www.radovsky.com).
