@@ -40,17 +40,17 @@
     Game.prototype.move = function () {
         for (var i = 0; i < this.myAsteroids.length; i++) {
             this.myAsteroids[i].move();
-            this.myAsteroids[i].bounce(Game.DIM_X, Game.DIM_Y);
+            this.myAsteroids[i].wrap(Game.DIM_X, Game.DIM_Y);
         }
         
         for (var j = 0; j < this.myBullets.length; j++) {
             this.myBullets[j].move();
-            this.myBullets[j].bounce(Game.DIM_X, Game.DIM_Y);
+            this.myBullets[j].wrap(Game.DIM_X, Game.DIM_Y);
         }
         
         this.ship.move();
         
-        this.ship.bounce(Game.DIM_X, Game.DIM_Y);
+        this.ship.wrap(Game.DIM_X, Game.DIM_Y);
     };
     
     Game.prototype.step = function () {
@@ -71,7 +71,7 @@
         for (var i = 0; i < this.myAsteroids.length; i++) {
             var currentAsteroid = this.myAsteroids[i];
             if(this.ship.isCollidedWith(currentAsteroid)) {
-                window.alert("You lost.");
+                window.alert("HULL BREACH");
                 this.stop();
             }
 			
@@ -99,8 +99,8 @@
     
     Game.prototype.removeBullet = function(bullet) {
 		console.log("removing bullet");
-        var deleteIndex = this.myAsteroids.indexOf(bullet);
-        this.myAsteroids.splice(deleteIndex, 1);
+        var deleteIndex = this.myBullets.indexOf(bullet);
+        this.myBullets.splice(deleteIndex, 1);
     };
     
     Game.prototype.stop = function() {

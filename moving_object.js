@@ -30,6 +30,21 @@
             this.vel[1] *= -1;
         }
     };
+	
+    MovingObject.prototype.wrap = function(dimX, dimY) {
+        if (this.centerX + this.radius > dimX) {
+            this.centerX = 0 + this.radius;
+        }
+        if (this.centerY + this.radius > dimY) {
+            this.centerY = 0 + this.radius;
+        }
+        if (this.centerX - this.radius < 0) {
+            this.centerX = dimX - this.radius;
+        }
+        if (this.centerY - this.radius < 0) {
+            this.centerY = dimY - this.radius;
+        }
+    };
     
     MovingObject.prototype.draw = function(ctx) {
         ctx.fillStyle = this.color;
@@ -49,9 +64,10 @@
     };
     
     MovingObject.prototype.isCollidedWith = function(otherObject) {
-        var distance = Math.sqrt( Math.pow((this.centerX - otherObject.centerX), 2) +
-                                  Math.pow((this.centerY - otherObject.centerY), 2)
-                        );
+        var distance = Math.sqrt(
+			Math.pow((this.centerX - otherObject.centerX), 2) +
+            Math.pow((this.centerY - otherObject.centerY), 2)
+		);
         return ( (this.radius + otherObject.radius) > distance);
     };
     
