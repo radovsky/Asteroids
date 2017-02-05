@@ -1,5 +1,4 @@
-(function (root) {
-    
+(function (root) {  
     var Asteroids = root.Asteroids = (root.Asteroids || {});
     
     var Ship = Asteroids.Ship = function (pos, vel, radius, color) {
@@ -18,10 +17,8 @@
         console.log("inside power");
     };
     
-    
     Ship.prototype.fireBullet = function(game) {
         var bulletVel = [this.vel[0] * 3, this.vel[1] * 3];
         return new Asteroids.Bullet([this.centerX, this.centerY], bulletVel, this.radius/2, "yellow", game);
     };
-
 })(this);

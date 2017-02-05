@@ -1,8 +1,6 @@
 (function (root) {
     var Asteroids = root.Asteroids = (root.Asteroids || {});
     
-
-    
     var Game = Asteroids.Game = function (ctx) {
         this.ctx = ctx;
         this.myAsteroids = [];
@@ -22,7 +20,6 @@
         }     
     };
 
-    
     Game.prototype.draw = function () {
         this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
         for (var i = 0; i < this.myAsteroids.length; i++) {
@@ -124,7 +121,5 @@
         window.key('space', function() { 
             that.fireBullet();
         });
-    };
-
-    
+    };   
 })(this);

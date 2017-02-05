@@ -70,6 +70,4 @@
 		);
         return ( (this.radius + otherObject.radius) > distance);
     };
-    
-    
 })(this);

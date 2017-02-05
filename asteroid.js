@@ -1,5 +1,4 @@
 (function (root) {
-    
     var Asteroids = root.Asteroids = (root.Asteroids || {});
     
     var Asteroid = Asteroids.Asteroid = function (pos, vel, radius, color) {
@@ -11,7 +10,6 @@
     Asteroid.COLOR = "black";
     Asteroid.RADIUS = 10;
     Asteroid.MAX_SPEED = 5;
-
     
     var randomVec = function() {
         var xIsNeg = (Math.random() > 0.5 ? 1 : -1);
@@ -29,8 +27,5 @@
             [centerX, centerY], randomVec(), Asteroid.RADIUS, Asteroid.COLOR
         );
         return asteroid;
-    };
-    
-    
-    
+    }; 
 })(this);
